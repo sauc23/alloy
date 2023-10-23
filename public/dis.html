@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href="/assets/main.css">
+        <style>
+            /* Hide everything by default */
+            body, .wrapper, header, #intro, #github, .container, .form, .info {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Function to get the value of a query parameter from the URL
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Get the value of the 'link' query parameter
+            const link = getQueryParam('link');
+
+            if (link) {
+                // Redirect to the URL specified in the 'link' query parameter
+                window.location.href = link;
+            } else {
+                // Automatically submit the form when the page loads
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Show the form
+                    document.querySelector(".form").style.display = "block";
+
+                    // Get the value of the 'url' query parameter and set it as the input field's value
+                    const urlValue = getQueryParam('url');
+                    document.getElementById("url").value = urlValue;
+
+                    // Initiate the form submission
+                    document.getElementById("initiate").click();
+                });
+            }
+        </script>
+
+        <div class="wrapper">
+            <header>
+                <div id="intro">Al<span>loy</span> Pro<span>xy</span></div>
+                <a id="github" href="https://github.com/titaniumnetwork-dev/alloy">
+                    <i class="fab fa-github"></i>Fork on Github
+                </a>
+            </header>
+            <div class="container">
+                <div class="form">
+                    <input placeholder="https://example.org/" id="url" value="https://discord.com/app">
+                    <button id="initiate">Go</button>
+                </div>
+                <div class="info">
+                    <h1>How do I use this?</h1>
+                    <p>To begin evading web filters, enter a URL into the input box above such as "example.org" or "https://example.org" then click the "Go" button.</p>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/main.js"></script>
+    </body>
+</html>
